@@ -1,12 +1,12 @@
 body {
   background: black;
+  text-align: center;
 }
 
 .clock {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
+  margin-top: 40vh;
+  display: inline-block;
+  text-align: center;
   color: #17d3fe;
   font-size: 60px;
   font-family: orbitron;
