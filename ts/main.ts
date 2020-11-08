@@ -1,14 +1,14 @@
-let numSquares = 6;
-let colors = [];
-let pickedColor;
+var numSquares = 6;
+var colors = [];
+var pickedColor;
 
-const squars = document.querySelectorAll('.square');
-const colorDisplay = document.querySelector('#color-display');
-const messageDisplay = document.querySelector('#message');
-const h1 = document.querySelector('h1');
-const resetButton = document.querySelector('#reset');
-const modeButtons = document.querySelectorAll('.mode');
-const easyButton = document.querySelector('.mode');
+var squares = document.querySelectorAll('.square');
+var colorDisplay = document.querySelector('#color-display');
+var messageDisplay = document.querySelector('#message');
+var h1 = document.querySelector('h1');
+var resetButton = document.querySelector('#reset');
+var modeButtons = document.querySelectorAll('.mode');
+var easyButton = document.querySelector('.mode');
 
 init();
 
@@ -19,19 +19,21 @@ function init() {
   reset();
 }
 
-resetButton.addEventListener('click', () => reset());
+resetButton.addEventListener('click', function () {
+  reset();
+});
 
 function setupSquares() {
-  for (let i = 0; i < squars.length; i++) {
-    squars[i].style.backgroundColor = colors[i];
-    squars[i].addEventListener('click', () => {
-      let ckickedColor = this.style.backgroundColor;
-      if (ckickedColor === pickedColor) {
+  for (var i = 0; i < squares.length; i++) {
+    squares[i].style.backgroundColor = colors[i];
+    squares[i].addEventListener('click', function () {
+      var clickedColor = this.style.backgroundColor;
+      if (clickedColor === pickedColor) {
         messageDisplay.textContent = 'Correct';
         resetButton.textContent = 'Play Again';
         changeColors(pickedColor);
       } else {
-        this.style.background = '#232323';
+        this.style.backgroundColor = '#232323';
         messageDisplay.textContent = 'try again';
       }
     });
@@ -39,9 +41,9 @@ function setupSquares() {
 }
 
 function setupMode() {
-  for (let i = 0; i < modeButtons.length; i++) {
-    modeButtons[i].addEventListener('click', () => {
-      for (let i = 0; i < modeButtons.length; i++) {
+  for (var i = 0; i < modeButtons.length; i++) {
+    modeButtons[i].addEventListener('click', function () {
+      for (var i = 0; i < modeButtons.length; i++) {
         modeButtons[i].classList.remove('selected');
       }
       this.classList.add('selected');
@@ -59,43 +61,42 @@ function reset() {
   colors = genRandomColors(numSquares);
   pickedColor = chooseColor();
   colorDisplay.textContent = pickedColor;
-  h1.style.background = '#2c8E99';
+  h1.style.backgroundColor = '#2C8E99';
   resetButton.textContent = 'New Colors';
   messageDisplay.textContent = '';
-  for (let i = 0; i < squars.length; i++) {
+  for (var i = 0; i < squares.length; i++) {
     if (colors[i]) {
-      squars[i].style.display = 'block';
-      squars[i].style.background = colors[i];
+      squares[i].style.display = 'block';
+      squares[i].style.backgroundColor = colors[i];
     } else {
-      squars[i].style.display = 'non';
+      squares[i].style.display = 'none';
     }
   }
 }
 
 function changeColors(color) {
-  for (let i = 0; i < squars.length; i++) {
-    squars[i].style.backgroundColor = color;
+  for (var i = 0; i < squares.length; i++) {
+    squares[i].style.backgroundColor = color;
     h1.style.backgroundColor = color;
   }
 }
 
 function chooseColor() {
-  let random = Math.floor(Math.random() * colors.length);
+  var random = Math.floor(Math.random() * colors.length);
   return colors[random];
 }
 
 function genRandomColors(num) {
-  let arr = [];
-  for (let i = 0; i < num; i++) {
+  var arr = [];
+  for (var i = 0; i < num; i++) {
     arr.push(makeColor());
   }
   return arr;
 }
 
 function makeColor() {
-  let r = Math.floor(Math.random() * 256);
-  let g = Math.floor(Math.random() * 256);
-  let b = Math.floor(Math.random() * 256);
-
+  var r = Math.floor(Math.random() * 256);
+  var g = Math.floor(Math.random() * 256);
+  var b = Math.floor(Math.random() * 256);
   return 'rgb(' + r + ', ' + g + ', ' + b + ')';
 }
