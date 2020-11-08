@@ -4,7 +4,7 @@
   "description": "https://mikkegoes.com/javascript-projects-for-beginners/",
   "main": "index.js",
   "scripts": {
-    "compile:sass": "node-sass sass/styles.scss css/styles.css -w"
+    "compile:sass": "node-sass sass/styles.scss css/styles.css"
   },
   "repository": {
     "type": "git",
