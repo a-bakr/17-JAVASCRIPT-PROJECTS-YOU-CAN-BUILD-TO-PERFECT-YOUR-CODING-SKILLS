@@ -1,7 +1,7 @@
 var numSquares = 6;
 var colors = [];
 var pickedColor;
-var squars = document.querySelectorAll('.square');
+var squares = document.querySelectorAll('.square');
 var colorDisplay = document.querySelector('#color-display');
 var messageDisplay = document.querySelector('#message');
 var h1 = document.querySelector('h1');
@@ -15,20 +15,21 @@ function init() {
     setupMode();
     reset();
 }
-resetButton.addEventListener('click', function () { return reset(); });
+resetButton.addEventListener('click', function () {
+    reset();
+});
 function setupSquares() {
-    var _this = this;
-    for (var i = 0; i < squars.length; i++) {
-        squars[i].style.backgroundColor = colors[i];
-        squars[i].addEventListener('click', function () {
-            var ckickedColor = _this.style.backgroundColor;
-            if (ckickedColor === pickedColor) {
+    for (var i = 0; i < squares.length; i++) {
+        squares[i].style.backgroundColor = colors[i];
+        squares[i].addEventListener('click', function () {
+            var clickedColor = this.style.backgroundColor;
+            if (clickedColor === pickedColor) {
                 messageDisplay.textContent = 'Correct';
                 resetButton.textContent = 'Play Again';
                 changeColors(pickedColor);
             }
             else {
-                _this.style.background = '#232323';
+                this.style.backgroundColor = '#232323';
                 messageDisplay.textContent = 'try again';
             }
         });
@@ -56,22 +57,22 @@ function reset() {
     colors = genRandomColors(numSquares);
     pickedColor = chooseColor();
     colorDisplay.textContent = pickedColor;
-    h1.style.background = '#2c8E99';
+    h1.style.backgroundColor = '#2C8E99';
     resetButton.textContent = 'New Colors';
     messageDisplay.textContent = '';
-    for (var i = 0; i < squars.length; i++) {
+    for (var i = 0; i < squares.length; i++) {
         if (colors[i]) {
-            squars[i].style.display = 'block';
-            squars[i].style.background = colors[i];
+            squares[i].style.display = 'block';
+            squares[i].style.backgroundColor = colors[i];
         }
         else {
-            squars[i].style.display = 'non';
+            squares[i].style.display = 'none';
         }
     }
 }
 function changeColors(color) {
-    for (var i = 0; i < squars.length; i++) {
-        squars[i].style.backgroundColor = color;
+    for (var i = 0; i < squares.length; i++) {
+        squares[i].style.backgroundColor = color;
         h1.style.backgroundColor = color;
     }
 }

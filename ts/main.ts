@@ -1,14 +1,14 @@
-var numSquares = 6;
-var colors = [];
-var pickedColor;
+let numSquares = 6;
+let colors = [];
+let pickedColor;
 
-var squares = document.querySelectorAll('.square');
-var colorDisplay = document.querySelector('#color-display');
-var messageDisplay = document.querySelector('#message');
-var h1 = document.querySelector('h1');
-var resetButton = document.querySelector('#reset');
-var modeButtons = document.querySelectorAll('.mode');
-var easyButton = document.querySelector('.mode');
+const squares = document.querySelectorAll('.square');
+const colorDisplay = document.querySelector('#color-display');
+const messageDisplay = document.querySelector('#message');
+const h1 = document.querySelector('h1');
+const resetButton = document.querySelector('#reset');
+const modeButtons = document.querySelectorAll('.mode');
+const easyButton = document.querySelector('.mode');
 
 init();
 
@@ -19,15 +19,15 @@ function init() {
   reset();
 }
 
-resetButton.addEventListener('click', function () {
+resetButton.addEventListener('click', () => {
   reset();
 });
 
 function setupSquares() {
-  for (var i = 0; i < squares.length; i++) {
+  for (let i = 0; i < squares.length; i++) {
     squares[i].style.backgroundColor = colors[i];
     squares[i].addEventListener('click', function () {
-      var clickedColor = this.style.backgroundColor;
+      let clickedColor = this.style.backgroundColor;
       if (clickedColor === pickedColor) {
         messageDisplay.textContent = 'Correct';
         resetButton.textContent = 'Play Again';
@@ -41,9 +41,9 @@ function setupSquares() {
 }
 
 function setupMode() {
-  for (var i = 0; i < modeButtons.length; i++) {
-    modeButtons[i].addEventListener('click', function () {
-      for (var i = 0; i < modeButtons.length; i++) {
+  for (let i = 0; i < modeButtons.length; i++) {
+    modeButtons[i].addEventListener('click', () => {
+      for (let i = 0; i < modeButtons.length; i++) {
         modeButtons[i].classList.remove('selected');
       }
       this.classList.add('selected');
@@ -64,7 +64,7 @@ function reset() {
   h1.style.backgroundColor = '#2C8E99';
   resetButton.textContent = 'New Colors';
   messageDisplay.textContent = '';
-  for (var i = 0; i < squares.length; i++) {
+  for (let i = 0; i < squares.length; i++) {
     if (colors[i]) {
       squares[i].style.display = 'block';
       squares[i].style.backgroundColor = colors[i];
@@ -75,28 +75,28 @@ function reset() {
 }
 
 function changeColors(color) {
-  for (var i = 0; i < squares.length; i++) {
+  for (let i = 0; i < squares.length; i++) {
     squares[i].style.backgroundColor = color;
     h1.style.backgroundColor = color;
   }
 }
 
 function chooseColor() {
-  var random = Math.floor(Math.random() * colors.length);
+  let random = Math.floor(Math.random() * colors.length);
   return colors[random];
 }
 
 function genRandomColors(num) {
-  var arr = [];
-  for (var i = 0; i < num; i++) {
+  let arr = [];
+  for (let i = 0; i < num; i++) {
     arr.push(makeColor());
   }
   return arr;
 }
 
 function makeColor() {
-  var r = Math.floor(Math.random() * 256);
-  var g = Math.floor(Math.random() * 256);
-  var b = Math.floor(Math.random() * 256);
+  let r = Math.floor(Math.random() * 256);
+  let g = Math.floor(Math.random() * 256);
+  let b = Math.floor(Math.random() * 256);
   return 'rgb(' + r + ', ' + g + ', ' + b + ')';
 }
