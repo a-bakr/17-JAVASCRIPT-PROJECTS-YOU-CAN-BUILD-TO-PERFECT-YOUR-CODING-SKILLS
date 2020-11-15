@@ -1,0 +1,23 @@
+{
+  "name": "javascript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a-bakr/17-JAVASCRIPT-PROJECTS-YOU-CAN-BUILD-TO-PERFECT-YOUR-CODING-SKILLS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/a-bakr/17-JAVASCRIPT-PROJECTS-YOU-CAN-BUILD-TO-PERFECT-YOUR-CODING-SKILLS/issues"
+  },
+  "homepage": "https://github.com/a-bakr/17-JAVASCRIPT-PROJECTS-YOU-CAN-BUILD-TO-PERFECT-YOUR-CODING-SKILLS#readme",
+  "dependencies": {
+    "@types/lodash": "^4.14.165",
+    "@types/underscore": "^1.10.24"
+  }
+}
